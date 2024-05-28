@@ -1,0 +1,9 @@
+name: cantemist
+
+dict:
+  custom:
+    lang:
+      - sp
+      - en
+    # Get from: https://temu.bsc.es/cantemist/wp-content/uploads/2020/07/valid-codes.txt
+    cantemist_path: C:\Users\Daniela\xmen\Cantemist\All_annotations_cantemist_2.tsv #put valid codes here
