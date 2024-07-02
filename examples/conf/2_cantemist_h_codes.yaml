@@ -1,4 +1,4 @@
-name: cantemist_h_codes
+name: 2_cantemist_h_codes
 
 dict:
   custom:
@@ -6,5 +6,4 @@ dict:
       - sp
       - en
     cantemist_path: Cantemist/KB_ICDO_v2.tsv
-    custom_codes_path: Cantemist/KB_Custom.tsv
     include_h_codes: True
