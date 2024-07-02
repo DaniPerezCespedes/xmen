@@ -65,8 +65,7 @@ def get_concept_details(cfg) -> dict:
             }  
             
 # Process entries from the second TSV file
-    path2 = cfg.dict.custom.custom_codes_path
-    gazetteer_dict2 = pd.read_csv(path2, sep="\t")   
+gazetteer_dict2 = pd.read_csv(custom_codes_path, sep="\t")   
     for _, entry in gazetteer_dict2.iterrows():
         sid = str(entry['ICD-O code'])
         if sid not in concept_details:

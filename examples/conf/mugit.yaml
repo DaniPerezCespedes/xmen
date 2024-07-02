@@ -1,9 +1,0 @@
-name: mugit
-
-dict:
-  custom:
-    lang:
-      - de
-      - en
-    # Get from: https://user.medunigraz.at/stefan.schulz/mugit/  
-    mugit_path: local_files/SCT-GIT_de_large.dat

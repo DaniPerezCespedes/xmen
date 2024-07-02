@@ -2,16 +2,30 @@ import pandas as pd
 
 def get_concept_details(cfg) -> dict:
     path = cfg.dict.custom.cantemist_path
+    #path2 = cfg.dict.custom.custom_codes_path
     gazetteer_dict = pd.read_csv(path, sep="\t")
+    #gazetteer_dict2 = pd.read_csv(path2, sep="\t")
 
     concept_details = {}
+    ##include_h_codes = cfg.dict.custom.get("include_h_codes", False)
+    ##include_grades = cfg.dict.custom.get("include_grades", False)
 
-#Add to knowledge base only the ICD-O codes from official terminology
     for _, entry in gazetteer_dict.iterrows():
+#Add to knowledge base only the ICD-O codes from official terminology
         sid = str(entry['ICD-O code'])
         if sid not in concept_details:
             concept_details[sid] = {
                 "concept_id": sid, 
+                "canonical_name": entry['Description 1'], 
+                "types": [], 
+                "aliases": [entry['Description 2']]
+            }
+    for _, entry in gazetteer_dict2.iterrows():
+#Add to knowledge base only custom codes from official terminology
+        sid_custom = str(entry['ICD-O code'])
+        if sid_custom not in concept_details:
+            concept_details[sid_custom] = {
+                "concept_id": sid_custom, 
                 "canonical_name": entry['Description 1'], 
                 "types": [], 
                 "aliases": [entry['Description 2']]
@@ -62,21 +76,7 @@ def get_concept_details(cfg) -> dict:
                 "canonical_name": entry['Description 1'] + " de alto grado", 
                 "types": [], 
                 "aliases": [entry['Description 2'] + " de alto grado"],
-            }  
-            
-# Process entries from the second TSV file
-    path2 = cfg.dict.custom.custom_codes_path
-    gazetteer_dict2 = pd.read_csv(path2, sep="\t")   
-    for _, entry in gazetteer_dict2.iterrows():
-        sid = str(entry['ICD-O code'])
-        if sid not in concept_details:
-            concept_details[sid] = {
-                "concept_id": sid, 
-                "canonical_name": entry['Description 1'], 
-                "types": [], 
-                "aliases": [entry['Description 2']]
-            }
-                   
+            }      
     return concept_details
 
 # Example usage:
