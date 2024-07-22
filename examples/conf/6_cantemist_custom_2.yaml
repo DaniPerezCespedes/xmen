@@ -1,0 +1,13 @@
+name: 6_cantemist_custom_2
+
+dict:
+  custom:
+    lang:
+      - sp
+      - en
+    cantemist_path: Cantemist/KB_ICDO_v2.tsv
+    #custom_codes_path: Cantemist/KB_Custom.tsv
+    custom_codes_path_2: Cantemist/KB_Custom_v2.tsv
+    include_h_codes: False
+    include_grades: False
+    include_grades_v2: False

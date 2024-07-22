@@ -29,46 +29,6 @@ def get_concept_details(cfg) -> dict:
                 }
          
         if cfg.dict.custom.get("include_grades", False):
-            #Add the grade 1 to all the concepts at the end --> for a code such as 8000/11 it will be redundant, because it will have 3 ones (or 3 digits after the /, which doesn't exist
-            sid_grade1 = str(entry['ICD-O code']) + "1"
-            if sid_grade1 not in concept_details:
-                concept_details[sid_grade1] = {
-                    "concept_id": sid_grade1, 
-                    "canonical_name": entry['Description 1'] + " de bajo grado", 
-                    "types": [], 
-                    "aliases": [entry['Description 2'] + " de bajo grado"],
-                }
-
-            #Add the grade 2 to all the concepts at the end
-            sid_grade2 = str(entry['ICD-O code']) + "2"
-            if sid_grade2 not in concept_details:
-                concept_details[sid_grade2] = {
-                    "concept_id": sid_grade2, 
-                    "canonical_name": entry['Description 1'] + " de grado intermedio", 
-                    "types": [], 
-                    "aliases": [entry['Description 2'] + " de grado intermedio"],
-                }
-
-            #Add the grade 3 to all the concepts at the end
-            sid_grade3 = str(entry['ICD-O code']) + "3"
-            if sid_grade3 not in concept_details:
-                concept_details[sid_grade3] = {
-                    "concept_id": sid_grade3, 
-                    "canonical_name": entry['Description 1'] + " grado 3", 
-                    "types": [], 
-                    "aliases": [entry['Description 2'] + " grado 3"],
-                }
-
-            #Add the grade 4 to all the concepts at the end
-            sid_grade4 = str(entry['ICD-O code']) + "4"
-            if sid_grade4 not in concept_details:
-                concept_details[sid_grade4] = {
-                    "concept_id": sid_grade4, 
-                    "canonical_name": entry['Description 1'] + " de alto grado", 
-                    "types": [], 
-                    "aliases": [entry['Description 2'] + " de alto grado"],
-                }  
-        if cfg.dict.custom.get("include_grades_v2", False):
             #Add the grade 1 to all the concepts at the end of the code
             #a) Add description according to the grade
             sid_grade1a = str(entry['ICD-O code']) + "1"
@@ -242,7 +202,6 @@ def get_concept_details(cfg) -> dict:
                     "aliases": [entry['Description 2'] + " grado IV"],
                 }
 
-    
     if path2 := cfg.dict.custom.get("custom_codes_path", None):
         # Process entries from the second TSV file (c
         gazetteer_dict2 = pd.read_csv(path2, sep="\t")   
@@ -254,8 +213,7 @@ def get_concept_details(cfg) -> dict:
                     "canonical_name": entry['Description 1'], 
                     "types": [], 
                     "aliases": [entry['Description 2']]
-                }
-                   
+                }               
     return concept_details
 
 # Example usage:

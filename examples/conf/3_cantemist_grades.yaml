@@ -6,5 +6,5 @@ dict:
       - sp
       - en
     cantemist_path: Cantemist/KB_ICDO_v2.tsv
-    include_h_codes: True
+    include_h_codes: False
     include_grades: True

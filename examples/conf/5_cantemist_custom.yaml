@@ -1,4 +1,4 @@
-name: 4_cantemist_custom
+name: 5_cantemist_custom
 
 dict:
   custom:
@@ -9,3 +9,4 @@ dict:
     custom_codes_path: Cantemist/KB_Custom.tsv
     include_h_codes: True
     include_grades: True
+    include_grades_v2: False

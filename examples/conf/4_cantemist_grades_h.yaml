@@ -1,0 +1,11 @@
+name: 4_cantemist_grades_h
+
+dict:
+  custom:
+    lang:
+      - sp
+      - en
+    cantemist_path: Cantemist/KB_ICDO_v2.tsv
+    include_h_codes: True
+    include_grades: True
+    include_grades_v2: False
