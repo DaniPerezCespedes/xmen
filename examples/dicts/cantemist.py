@@ -255,7 +255,18 @@ def get_concept_details(cfg) -> dict:
                     "types": [], 
                     "aliases": [entry['Description 2']]
                 }
-                   
+    if path3 := cfg.dict.custom.get("custom_codes_path_2", None):
+        # Process entries from the second TSV file
+        gazetteer_dict3 = pd.read_csv(path3, sep="\t")   
+        for _, entry in gazetteer_dict3.iterrows():
+            sid = str(entry['ICD-O code'])
+            if sid not in concept_details:
+                concept_details[sid] = {
+                    "concept_id": sid, 
+                    "canonical_name": entry['Description 1'], 
+                    "types": [], 
+                    "aliases": [entry['Description 2']]
+                }                                      
     return concept_details
 
 # Example usage:
